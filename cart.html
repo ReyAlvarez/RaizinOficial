@@ -20,45 +20,47 @@
     <title>Raizin Oficial</title>
   </head>
   <body>
-    <nav class="navbar navbar__custom navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Raizin</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <nav class="w-screen h-[56px] flex items-center bg-[#869470] fixed top-0">
+      <div class="container px-5 flex justify-between items-center">
+        <a class="mr-10 font-bold text-2xl" href="#">Raizin</a>
+        <!-- Navegacion Desktop -->
+        <ul class="hidden w-[40%] h-auto ml-40 mr-auto items-center justify-between font-bold text-white text-lg bg-[#869470] lg:flex">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Productos</a>
+          </li>
+          <li>
+            <a href="#">Capsulas</a>
+          </li>
+          <li>
+            <a href="#">POCA GRACIA! </a>
+          </li>
+        </ul>
+        <!-- Navegacion Mobile -->
+        <ul
+          id="slice"
+          class="close w-[90%] h-screen px-10 py-80 flex flex-col items-center justify-between absolute top-0 left-0 font-bold text-white text-2xl bg-[#869470] transition lg:hidden"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Tinturas</a></li>
-                <li><a class="dropdown-item" href="#">Capsulas</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Polvos</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Productos</a>
+          </li>
+          <li>
+            <a href="#">Algo</a>
+          </li>
+          <li>
+            <a href="#">Algo</a>
+          </li>
+        </ul>
+        <div id="burger-btn" class="nav-icon3 lg:hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </nav>
@@ -102,7 +104,7 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script src="./cart.js"></script>
+    <script type="module" src="./cart.js"></script>
     <script type="module" src="/mainScript.js"></script>
   </body>
 </html>

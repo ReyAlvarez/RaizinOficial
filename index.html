@@ -16,71 +16,67 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <link href="dist/hamburgers.css" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
     <title>Raizin Oficial</title>
   </head>
   <body>
-    <nav class="navbar navbar__custom navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Raizin</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <nav class="index-navbar w-screen h-[56px] flex items-center bg-[#869470] fixed top-0 z-50">
+      <div class="container px-5 flex justify-between items-center">
+        <a class="mr-10 font-bold text-2xl" href="#">Raizin</a>
+        <!-- Navegacion Desktop -->
+        <ul class="hidden w-[40%] h-auto ml-40 mr-auto items-center justify-between font-bold text-white text-lg bg-[#869470] lg:flex">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Productos</a>
+          </li>
+          <li>
+            <a href="#">Capsulas</a>
+          </li>
+          <li class="submenu justify-end">
+            <a href="./cart.html"><img src="./images/basket.svg" id="img-carrito" /></a>
+            <div id="carrito">
+              <table id="lista-carrito" class="u-full-width">
+                <thead>
+                  <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+            </div>
+          </li>
+        </ul>
+        <!-- Navegacion Mobile -->
+        <ul
+          id="slice"
+          class="close w-[90%] h-screen px-10 py-80 flex flex-col items-center justify-between absolute top-0 left-0 font-bold text-white text-2xl bg-[#869470] transition lg:hidden"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Tinturas</a></li>
-                <li><a class="dropdown-item" href="#">Capsulas</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Polvos</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-          <!-- <div class="two columns u-pull-right">
-            <ul>
-              <li class="submenu">
-                <img src="./images/basket.svg" id="img-carrito" />
-                <div id="car  rito">
-                  <table id="lista-carrito" class="u-full-width">
-                    <thead>
-                      <tr>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody></tbody>
-                  </table>
-                  <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
-                </div>
-              </li>
-            </ul>
-          </div> -->
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Productos</a>
+          </li>
+          <li>
+            <a href="#">Algo</a>
+          </li>
+          <li>
+            <a href="#">Algo</a>
+          </li>
+        </ul>
+        <div id="burger-btn" class="nav-icon3 lg:hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </nav>
@@ -91,38 +87,45 @@
         <h1 class="pb-7" id="main_title">Raizin</h1>
       </div>
     </header>
-    <main>
-      <p class="pb-5 px-24">
-        Somos una empresa apasionada por el bienestar y comprometida con la promoción de una vida equilibrada y saludable. En RAIZIN, nos enorgullece ofrecer
-        una amplia gama de adaptógenos de alta calidad, presentados en cápsulas, tinturas y polvos, para ayudarte a alcanzar tu máximo potencial y lograr un
-        estado de bienestar óptimo. Nuestros productos están cuidadosamente seleccionados y formulados para brindarte los beneficios naturales y
-        restauradores de los adaptógenos más poderosos de la naturaleza. Trabajamos con ingredientes de primera calidad, y nos enfocamos en destacados
-        adaptógenos como el hongo melena de león, reishi, cordyceps, chaga, shiitake, ashwagandha, magnesio y Rhodiola, conocidos por sus propiedades únicas
-        y su capacidad para fortalecer el cuerpo y la mente. Creemos en la importancia de la armonía entre el cuerpo y la mente, y nuestros productos están
-        diseñados para ayudarte a lidiar con el estrés, aumentar tu energía, promover la claridad mental y mejorar tu sistema inmunológico. Ya sea que estés
-        buscando un impulso de energía natural para enfrentar tu día a día o desees fortalecer tu bienestar general, en RAIZIN encontrarás una solución
-        adaptada a tus necesidades. Nos enorgullece ofrecer una experiencia de cliente excepcional. Nuestro equipo está comprometido con tu satisfacción y
-        bienestar, y estamos aquí para responder a todas tus preguntas y brindarte el apoyo que necesites en tu viaje hacia una vida más saludable. Además,
-        trabajamos en estrecha colaboración con expertos en adaptógenos y seguimos las mejores prácticas de la industria para garantizar que nuestros
-        productos cumplan con los más altos estándares de calidad. En RAIZIN, creemos en el poder de la naturaleza para nutrir y fortalecer nuestro cuerpo y
-        mente. Te invitamos a explorar nuestra línea de productos de adaptógenos y descubrir cómo pueden mejorar tu bienestar de manera holística. Únete a
-        nosotros en este viaje hacia una vida más equilibrada y plena. ¡Gracias por elegir RAIZIN, tu socio confiable en el camino hacia el bienestar!
-      </p>
-      <aside class="">
-        <img class="" id="asideCreamMush" src="./images/creamMush.avif" alt="Cream mushroom on a branch" />
-      </aside>
-      <div class="flex flex-col">
+
+    <main class="container">
+      <section class="w-full mb-40 flex justify-center">
+        <article class="max-w-2xl">
+          <p class="mb-2">
+            Somos una empresa apasionada por el bienestar y comprometida con la promoción de una vida equilibrada y saludable. En <b>RAIZIN</b>, nos
+            enorgullece ofrecer una amplia gama de adaptógenos de alta calidad, presentados en cápsulas, tinturas y polvos, para ayudarte a alcanzar tu
+            máximo potencial y lograr un estado de bienestar óptimo. Nuestros productos están cuidadosamente seleccionados y formulados para brindarte los
+            beneficios naturales y restauradores de los adaptógenos más poderosos de la naturaleza.
+          </p>
+
+          <p class="mb-2">
+            Trabajamos con ingredientes de primera calidad, y nos enfocamos en destacados adaptógenos como el hongo melena de león, reishi, cordyceps, chaga,
+            shiitake, ashwagandha, magnesio y Rhodiola, conocidos por sus propiedades únicas y su capacidad para fortalecer el cuerpo y la mente. Creemos en
+            la importancia de la armonía entre el cuerpo y la mente, y nuestros productos están diseñados para ayudarte a lidiar con el estrés, aumentar tu
+            energía, promover la claridad mental y mejorar tu sistema inmunológico.
+          </p>
+          <p class="mb-2">
+            Ya sea que estés buscando un impulso de energía natural para enfrentar tu día a día o desees fortalecer tu bienestar general, en RAIZIN
+            encontrarás una solución adaptada a tus necesidades. Nos enorgullece ofrecer una experiencia de cliente excepcional. Nuestro equipo está
+            comprometido con tu satisfacción y bienestar, y estamos aquí para responder a todas tus preguntas y brindarte el apoyo que necesites en tu viaje
+            hacia una vida más saludable. Además, trabajamos en estrecha colaboración con expertos en adaptógenos y seguimos las mejores prácticas de la
+            industria para garantizar que nuestros productos cumplan con los más altos estándares de calidad.
+          </p>
+          <p class="mb-2">
+            En <b>RAIZIN</b>, creemos en el poder de la naturaleza para nutrir y fortalecer nuestro cuerpo y mente. Te invitamos a explorar nuestra línea de
+            productos de adaptógenos y descubrir cómo pueden mejorar tu bienestar de manera holística. Únete a nosotros en este viaje hacia una vida más
+            equilibrada y plena. ¡Gracias por elegir <b>RAIZIN</b>, tu socio confiable en el camino hacia el bienestar!
+          </p>
+        </article>
+      </section>
+      <div class="container flex flex-col">
         <h3 class="flex justify-center" id="products_title">Productos</h3>
-        <div class="w-screen place-items-center grid grid-cols-3 gap-4 py-6" id="container">
-          <!-- <div class="bg-slate-600 w-[100px] h-[100px]"></div>
-          <div class="bg-slate-600 w-[100px] h-[100px]"></div>
-          <div class="bg-slate-600 w-[100px] h-[100px]"></div>
-          <div class="bg-slate-600 w-[100px] h-[100px]"></div>
-          <div class="bg-slate-600 w-[100px] h-[100px]"></div>
-          <div class="bg-slate-600 w-[100px] h-[100px]"></div> -->
+        <div class="container place-items-center grid grid-cols-3 gap-4 py-6" id="cards-container"></div>
+        <div class="mensajes-container">
+          <div class="class-alertas"></div>
         </div>
         <div id="message">
-          <p>I couldn't match and product to that ID</p>
+          <!-- <p>I couldn't match and product to that ID</p> -->
         </div>
       </div>
     </main>

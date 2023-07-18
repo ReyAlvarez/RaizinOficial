@@ -1,5 +1,20 @@
+import { addToCart, saveCart, productsCart, loadCartEventListeners } from "./cart.js";
+// import { saveCart } from "./cart.js";
 import { productList } from "./json/productsRaizin.js";
-const container = document.querySelector("#container");
+
+const container = document.querySelector("#cards-container");
+const burger_btn = document.querySelector("#burger-btn");
+burger_btn.addEventListener("click", () => {
+  burger_btn.classList.toggle("open");
+  if (burger_btn.classList.contains("open")) {
+    const slice = document.querySelector("#slice");
+    slice.classList.toggle("open");
+    slice.classList.toggle("close");
+  } else {
+    slice.classList.toggle("open");
+    slice.classList.toggle("close");
+  }
+});
 
 const dynamicCards = (product) => {
   return `<div class="card flex">              
@@ -17,7 +32,9 @@ const addClickToCartBTN = () => {
     button.addEventListener("click", (e) => {
       addToCart(e.target.id);
       saveCart();
-      showMessage("El producto se agrego correctamente al carrito 😃");
+      console.log(productsCart);
+
+      // showMessage("El producto se agrego correctamente al carrito 😃");
     });
   }
 };
