@@ -26,4 +26,23 @@ const retrieveCart = () => {
   return JSON.parse(localStorage.getItem("productsCart")) || [];
 };
 
-const productsCart = retrieveCart();
+const showCartItems = retrieveCart();
+console.log(showCartItems);
+
+function displayCartItems() {
+  const tableBody = document.querySelector("#cartTable tbody");
+  tableBody.innerHTML = "";
+
+  showCartItems.forEach((item) => {
+    const row = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    const priceCell = document.createElement("td");
+
+    nameCell.textContent = item.name;
+    priceCell.textContent = item.price;
+
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+    tableBody.appendChild(row);
+  });
+}
