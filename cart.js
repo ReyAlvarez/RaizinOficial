@@ -1,25 +1,6 @@
+// <===================== IMPORTS =====================>
+
 import { productList } from "./json/productsRaizin.js";
-
-// <===================== VARIABLES =====================>
-const carrito = document.querySelector("#carrito");
-const contenedorCarrito = document.querySelector("#lista-carrito tbody");
-const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
-const listaCursos = document.querySelector("#lista-cursos");
-let articulosCarrito = [];
-
-export function loadCartEventListeners() {
-  // Cuando agregas un curso presionando el Btn agregar al carrito
-  listaCursos.addEventListener("click", agregarCurso);
-
-  // Eliminar cursos del carrito
-  carrito.addEventListener("click", eliminarCurso);
-
-  //Vaciar Carrito
-  vaciarCarritoBtn.addEventListener("click", () => {
-    articulosCarrito = []; // Reseteamos el Arreglo para que quede vacio nuevamente
-    limpiarHTML(); // Eliminamos todo el HTML
-  });
-}
 
 export const productsCart = [];
 export const saveCart = () => {
@@ -41,8 +22,8 @@ export const addToCart = (productId) => {
   }
 };
 
-// const retrieveCart = () => {
-//   return JSON.parse(localStorage.getItem("productsCart")) || [];
-// };
+const retrieveCart = () => {
+  return JSON.parse(localStorage.getItem("productsCart")) || [];
+};
 
-// const productsCart = retrieveCart();
+const productsCart = retrieveCart();

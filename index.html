@@ -23,11 +23,11 @@
   <body>
     <nav class="index-navbar w-screen h-[56px] flex items-center bg-[#869470] fixed top-0 z-50">
       <div class="container px-5 flex justify-between items-center">
-        <a class="mr-10 font-bold text-2xl" href="#">Raizin</a>
+        <a class="mr-10 font-bold text-2xl" href="./index.html">Raizin</a>
         <!-- Navegacion Desktop -->
         <ul class="hidden w-[40%] h-auto ml-40 mr-auto items-center justify-between font-bold text-white text-lg bg-[#869470] lg:flex">
           <li>
-            <a href="#">Home</a>
+            <a href="./index.html">Home</a>
           </li>
           <li>
             <a href="#">Productos</a>
@@ -50,7 +50,7 @@
                 </thead>
                 <tbody></tbody>
               </table>
-              <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+              <a href="#" id="empty-cart" class="button u-full-width">Vaciar Carrito</a>
             </div>
           </li>
         </ul>
@@ -70,6 +70,24 @@
           </li>
           <li>
             <a href="#">Algo</a>
+          </li>
+          <li class="submenu justify-end">
+            <a href="./cart.html"><img src="./images/basket.svg" id="img-carrito" /></a>
+            <div id="carrito">
+              <table id="lista-carrito" class="u-full-width">
+                <thead>
+                  <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <a href="#" id="empty-cart" class="button u-full-width">Vaciar Carrito</a>
+            </div>
           </li>
         </ul>
         <div id="burger-btn" class="nav-icon3 lg:hidden">
