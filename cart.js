@@ -22,12 +22,12 @@ export const addToCart = (productId) => {
   }
 };
 
-const retrieveCart = () => {
+export const retrieveCart = () => {
   return JSON.parse(localStorage.getItem("productsCart")) || [];
 };
 
-const showCartItems = retrieveCart();
-console.log(showCartItems);
+export const showCartItems = retrieveCart();
+// console.log(showCartItems);
 
 function displayCartItems() {
   const tableBody = document.querySelector("#cartTable tbody");
@@ -38,11 +38,13 @@ function displayCartItems() {
     const nameCell = document.createElement("td");
     const priceCell = document.createElement("td");
 
-    nameCell.textContent = item.name;
+    nameCell.textContent = item.title;
     priceCell.textContent = item.price;
+    // imageCell.textContent = item.image;
 
     row.appendChild(nameCell);
     row.appendChild(priceCell);
     tableBody.appendChild(row);
   });
 }
+displayCartItems();
