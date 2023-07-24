@@ -34,6 +34,7 @@ const addClickToCartBTN = () => {
     button.addEventListener("click", (e) => {
       addToCart(e.target.id);
       saveCart();
+      showMessage(`Agregaste ${e.target.id} al carrito`);
       console.log(productsCart);
 
       // showMessage("El producto se agrego correctamente al carrito 😃");
@@ -41,13 +42,13 @@ const addClickToCartBTN = () => {
   }
 };
 
-const showMessage = (message) => {
-  const msg = document.querySelector(".class-alertas");
-  msg.textContent = message;
-  setTimeout(() => {
-    msg.textContent = "";
-  }, 3000);
-};
+// const showMessage = (message) => {
+//   const msg = document.querySelector("div.class-alertas");
+//   msg.textContent = message;
+//   setTimeout(() => {
+//     msg.textContent = "";
+//   }, 3000);
+// };
 
 const loadProducts = (array) => {
   container.innerHTML = "";
@@ -73,9 +74,12 @@ const addToCart = (productId) => {
     if (result) {
       productsCart.push(result);
       saveCart();
-      document.getElementById("message").innerHTML = `Agregaste ${productId} was added to cart`;
+      document.querySelector("#message").innerHTML = `Agregaste ${productId} was added to cart`;
+      setTimeout(() => {
+        document.querySelector("#message").innerHTML = "";
+      }, 2500);
     } else {
-      document.getElementById("message").innerHTML = "";
+      document.querySelector("#message").innerHTML = "";
     }
   }
 };
