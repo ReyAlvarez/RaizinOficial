@@ -1,118 +1,6 @@
-import { addToCart, saveCart, productsCart, showCartItems } from "./cart.js";
+// import { addToCart, saveCart, productsCart, showCartItems } from "./cart.js";
 // import { saveCart } from "./cart.js";
 import { productList } from "./json/productsRaizin.js";
-
-// <===================== VARIABLES =====================>
-const cart = document.querySelector("#cart");
-const cartContainer = document.querySelector("#product-list");
-const emptyCartBtn = document.querySelector("#empty-cart");
-const productListAdd = document.querySelector("#product-list");
-// let productsCart = [];
-export function loadCartEventListeners() {
-  // Cuando agregas un curso presionando el Btn agregar al carrito
-  productListAdd.addEventListener("click", addProduct);
-
-  // Eliminar cursos del carrito
-  cart.addEventListener("click", deleteProduct);
-
-  //Vaciar Carrito
-  emptyCartBtn.addEventListener("click", () => {
-    productsNavCart = []; // Reseteamos el Arreglo para que quede vacio nuevamente
-    limpiarHTML(); // Eliminamos todo el HTML
-  });
-}
-
-// <===================== FUNCIONES =====================>
-// Add Product to nav cart
-function addProduct(e) {
-  e.preventDefault();
-  if (e.target.classList.contains("add-product")) {
-    const selectedProduct = e.target.parentElement.parentElement;
-    readProductData(selectedProduct);
-  }
-}
-
-// Eliminar Curso
-function deleteProduct(e) {
-  if (e.target.classList.contains("delete-product")) {
-    const productId = e.target.getAttribute("data-id");
-    // Elimina del arreglo productsCart con el data-id
-    productsNavCart = productsCart.filter((product) => product.id !== productId);
-    productHTML();
-  }
-}
-
-// Lee el contenido del HTML al que le dimos click y extrae la informacion del curso
-function readProductData(product) {
-  //   console.log(product);
-  // Crear un objeto con el contenido del curso actual
-  const infoProduct = {
-    imagen: product.querySelector("img").src,
-    titulo: product.querySelector("h4").textContent,
-    precio: product.querySelector(".precio span").textContent,
-    id: product.querySelector("a").getAttribute("data-id"), // Mediante getAttribiute() extraigo la informacion de data-id para darsela a el key del objeto infoCurso
-    cantidad: 1,
-  };
-  // Revisa si un elemento ya existe en el carrito.
-
-  const exists = productsNavCart.some((product) => product.id === infoProduct.id); // .some() devuelve boolean
-  if (exists) {
-    // Actualizo cantidad carrito
-    const products = productsNavCart.map((product) => {
-      if (product.id === infoProduct.id) {
-        product.cantidad++;
-        return product; // Retorna el objeto actualizado
-      } else {
-        return product; // Retorna los objetosque no son los duplicados pero que siguen siendo importantes para nuestro carrito de compras
-      }
-    });
-  } else {
-    // Agrega el elemento al carrito
-    productsNavCart = [...productsNavCart, infoProduct];
-  }
-
-  //Agrega elementos al arreglo del carrito
-
-  console.log(productsNavCart);
-  productHTML();
-}
-
-// Muestra el Carrito de compras en el HTML <=====================
-
-function productHTML() {
-  // Limpar el HTML
-  // limpiarHTML();         <-------- Descomentar !!!
-
-  // Recorre el carrito y genera el HTML
-  productsNavCart.forEach((product) => {
-    const { imagen, titulo, precio, cantidad, id } = product; // Destructuring
-
-    const row = document.createElement("tr");
-    row.innerHTML = `
-    <tr>
-    <td><img src=${product.imagen} width="100px"></td>
-        <td>${product.titulo}</td>
-        <td>${product.precio}</td>
-        <td>${product.cantidad}</td>
-        <td>
-        <a href="#" class="delete-product" data-id="${product.id}"> X </a>
-        </td>
-    </tr>
-        `;
-
-    // Agrega el HTML del carrito en el tbody
-    cartContainer.appendChild(row);
-  });
-}
-
-// Eliminar los cursos del tbody
-function limpiarHTML() {
-  //   cartContainer.innerHTML = "";  // Forma LENTA de borrar
-  //
-  while (cartContainer.firstChild) {
-    cartContainer.removeChild(cartContainer.firstChild);
-  }
-}
 
 // <===================== Nav Bar Begins =====================>
 const container = document.querySelector("#cards-container");
@@ -174,3 +62,55 @@ const loadProducts = (array) => {
 };
 
 loadProducts(productList);
+
+// <===================== CART BEGINS =====================>
+
+const productsCart = [];
+
+const addToCart = (productId) => {
+  if (productId > 0) {
+    const result = productList.find((product) => product.id === parseInt(productId));
+    if (result) {
+      productsCart.push(result);
+      saveCart();
+      document.getElementById("message").innerHTML = `Agregaste ${productId} was added to cart`;
+    } else {
+      document.getElementById("message").innerHTML = "";
+    }
+  }
+};
+
+const saveCart = () => {
+  if (productsCart.length > 0) {
+    localStorage.setItem("productsCart", JSON.stringify(productsCart));
+  }
+};
+
+const retrieveCart = () => {
+  return JSON.parse(localStorage.getItem("productsCart")) || [];
+};
+
+const populateCartTable = () => {
+  const cartData = retrieveCart();
+  const tableBody = document.querySelector("#cartTable tbody");
+  tableBody.innerHTML = ""; // Clear the table body before populating
+
+  cartData.forEach((product) => {
+    const row = document.createElement("tr");
+    const productNameCell = document.createElement("td");
+    const productPriceCell = document.createElement("td");
+    const productCategoryCell = document.createElement("td");
+
+    productNameCell.textContent = product.title; // Assuming the product object has a 'name' property
+    productPriceCell.textContent = product.price; // Assuming the product object has a 'price' property
+    productCategoryCell.textContent = product.category; // Assuming the product object has a 'category' property
+
+    row.appendChild(productNameCell);
+    row.appendChild(productPriceCell);
+    row.appendChild(productCategoryCell);
+    tableBody.appendChild(row);
+  });
+};
+
+// Call the function to populate the table when the page loads or whenever needed
+populateCartTable();

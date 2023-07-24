@@ -35,24 +35,6 @@
           <li>
             <a href="#">Capsulas</a>
           </li>
-          <li class="submenu justify-end">
-            <a href="./cart.html"><img src="./images/basket.svg" id="img-carrito" /></a>
-            <div id="carrito">
-              <table id="lista-carrito" class="u-full-width">
-                <thead>
-                  <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-              <a href="#" id="empty-cart" class="button u-full-width">Vaciar Carrito</a>
-            </div>
-          </li>
         </ul>
         <!-- Navegacion Mobile -->
         <ul
@@ -70,24 +52,6 @@
           </li>
           <li>
             <a href="#">Algo</a>
-          </li>
-          <li class="submenu justify-end">
-            <a href="./cart.html"><img src="./images/basket.svg" id="img-carrito" /></a>
-            <div id="carrito">
-              <table id="product-list" class="u-full-width">
-                <thead>
-                  <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-              <a href="#" id="empty-cart" class="button u-full-width">Vaciar Carrito</a>
-            </div>
           </li>
         </ul>
         <div id="burger-btn" class="nav-icon3 lg:hidden">
@@ -142,10 +106,32 @@
         <div class="mensajes-container">
           <div class="class-alertas"></div>
         </div>
-        <div id="message">
-          <!-- <p>I couldn't match and product to that ID</p> -->
+        <div class="mensajes-container">
+          <div id="message"></div>
         </div>
-      </div>
+      <section id="cart">
+        <div class="cart__Title">
+          <h1>Mis compras</h1>
+        </div>
+        <div class="container flex-col items-center justify-center">
+          <table id="cartTable">
+            <thead>
+              <tr class="justify-center flex-col">
+                <th id="product_title">Nombre Producto</th>
+                <th id="product_price">Valor $</th>
+                <th id="product_category">Categoría</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nombre</td>
+                <td>Importe</td>
+                <td>Categoría</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <footer></footer>
@@ -155,7 +141,7 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="./cart.js"></script>
+    <!-- <script type="module" src="./cart.js"></script> -->
     <script type="module" src="./mainScript.js"></script>
   </body>
 </html>

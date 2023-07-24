@@ -29,22 +29,22 @@ export const retrieveCart = () => {
 export const showCartItems = retrieveCart();
 // console.log(showCartItems);
 
-function displayCartItems() {
-  const tableBody = document.querySelector("#cartTable tbody");
-  tableBody.innerHTML = "";
+// function displayCartItems() {
+//   const tableBody = document.querySelector("#cartTable tbody");
+//   // tableBody.innerHTML = "";
 
-  showCartItems.forEach((item) => {
-    const row = document.createElement("tr");
-    const nameCell = document.createElement("td");
-    const priceCell = document.createElement("td");
+//   showCartItems.forEach((item) => {
+//     const row = document.createElement("tr");
+//     const nameCell = document.createElement("td");
+//     const priceCell = document.createElement("td");
 
-    nameCell.textContent = item.title;
-    priceCell.textContent = item.price;
-    // imageCell.textContent = item.image;
+//     nameCell.textContent = item.title;
+//     priceCell.textContent = item.price;
+//     // imageCell.textContent = item.image;
 
-    row.appendChild(nameCell);
-    row.appendChild(priceCell);
-    tableBody.appendChild(row);
-  });
-}
-displayCartItems();
+//     row.appendChild(nameCell);
+//     row.appendChild(priceCell);
+//     tableBody.appendChild(row);
+//   });
+// }
+// displayCartItems();
