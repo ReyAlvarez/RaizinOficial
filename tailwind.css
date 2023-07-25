@@ -188,11 +188,24 @@ border-radius: 10p solid black;
   min-width: 300px;
 }
 
+#cart__Title{
+  font-family: 'Lora', serif;
+  font-size: 24px;
+}
+
 #cart{
-  background-color: #f3c680;
+  width: 50%;
   border-radius: 20px;
   margin-bottom: 16px;
-  padding-bottom: 16px  
+  padding-bottom: 16px;  
+  background-color: #f3c680;
+  padding-top: 30px;
+    gap: 30px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 thead {

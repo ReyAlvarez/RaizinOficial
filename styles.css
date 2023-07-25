@@ -604,10 +604,6 @@ video {
   margin-top: 0.75rem;
 }
 
-.block {
-  display: block;
-}
-
 .flex {
   display: flex;
 }
@@ -672,10 +668,6 @@ video {
   align-items: center;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -728,11 +720,6 @@ video {
 .pe-2 {
   -webkit-padding-end: 0.5rem;
           padding-inline-end: 0.5rem;
-}
-
-.ps-3 {
-  -webkit-padding-start: 0.75rem;
-          padding-inline-start: 0.75rem;
 }
 
 .pt-3 {
@@ -936,11 +923,24 @@ img#asideCreamMush{
   min-width: 300px;
 }
 
+#cart__Title{
+  font-family: 'Lora', serif;
+  font-size: 24px;
+}
+
 #cart{
-  background-color: #f3c680;
+  width: 50%;
   border-radius: 20px;
   margin-bottom: 16px;
-  padding-bottom: 16px
+  padding-bottom: 16px;
+  background-color: #f3c680;
+  padding-top: 30px;
+  gap: 30px;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 thead {
