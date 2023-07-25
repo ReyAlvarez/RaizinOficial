@@ -16,9 +16,25 @@ burger_btn.addEventListener("click", () => {
 });
 // <===================== Nav Bar Ends =====================>
 
+// Agregamos un evento para cargar los productos cuando el JSON esté listo
+document.addEventListener("DOMContentLoaded", () => {
+  // Obtenemos los datos del JSON usando fetch
+  fetch("./json/productsRaizin.json")
+    .then((response) => response.json())
+    .then((data) => {
+      // Asignamos los datos a la variable productList
+      const productList = data.products;
+      // Cargamos los productos en el contenedor
+      loadProducts(productList);
+    })
+    .catch((error) => {
+      console.error("Error fetching product data:", error);
+    });
+});
+
 const dynamicCards = (product) => {
   return `<div class="card flex">              
-                <div class="product_image "><img class="inline-block h-12 w-12 rounded-full ring-2 ring-white" src=${product.image}></div>
+                <div class="product_image"><img class="inline-block h-12 w-12 rounded-full ring-2 ring-white" src=${product.image}></div>
                 <div class="product_title"><p>${product.title}</p></div>
                 <div class="product_price"><p><b>$${product.price}</b></p></div>
                 <div class="product_description pb"><p>${product.description}</p></div>
@@ -26,27 +42,15 @@ const dynamicCards = (product) => {
           </div>`;
 };
 
-const addClickToCartBTN = () => {
+function addClickToCartBTN() {
   const buttons = document.querySelectorAll("button.button-addToCart");
-  for (const button of buttons) {
+  for (let button of buttons) {
     button.addEventListener("click", (e) => {
       addToCart(e.target.id);
-      saveCart();
-      // showMessage(`Agregaste ${e.target.id} al carrito`);
-      console.log(productsCart);
-
-      // showMessage("El producto se agrego correctamente al carrito 😃");
+      populateCartTable();
     });
   }
-};
-
-// const showMessage = (message) => {
-//   const msg = document.querySelector("div.class-alertas");
-//   msg.textContent = message;
-//   setTimeout(() => {
-//     msg.textContent = "";
-//   }, 3000);
-// };
+}
 
 const loadProducts = (array) => {
   container.innerHTML = "";
@@ -63,37 +67,60 @@ const loadProducts = (array) => {
 loadProducts(productList);
 
 // <===================== CART BEGINS =====================>
-
-const productsCart = [];
+//Pasa a estar antes del carrito
+addClickToCartBTN(); // lo agregue para que refresque automaticamente el carrito
+const retrieveCart = () => {
+  return JSON.parse(localStorage.getItem("productsCart")) || [];
+};
+//al carrito le asignamos el localStorage
+const productsCart = retrieveCart();
 
 const addToCart = (productId) => {
   if (productId > 0) {
-    const result = productList.find((product) => product.id === parseInt(productId));
-    if (result) {
-      productsCart.push(result);
-      saveCart();
-      document.querySelector("#message").innerHTML = `Agregaste ${productId} was added to cart`;
-      setTimeout(() => {
+    const result = productList.find((product) => product.id == parseInt(productId));
+    if (productId > 0) {
+      const result = productList.find((product) => product.id == parseInt(productId));
+      if (result) {
+        // Check if the product is already in the cart
+        if (productsCart.find((product) => product.id === result.id)) {
+          const index = productsCart.findIndex((product) => product.id === result.id);
+          productsCart[index].quantity++;
+        } else {
+          productsCart.push(result);
+        }
+        saveCart();
+        document.querySelector("#message").innerHTML = `Agregaste ${productId} was added to cart`;
+        setTimeout(() => {
+          document.querySelector("#message").innerHTML = "";
+        }, 2500);
+      } else {
         document.querySelector("#message").innerHTML = "";
-      }, 2500);
-    } else {
-      document.querySelector("#message").innerHTML = "";
+      }
     }
   }
 };
-
+//   if (productId > 0) {
+//     const result = productList.find((product) => product.id == parseInt(productId));
+//     if (result) {
+//       productsCart.push(result);
+//       saveCart();
+//       document.querySelector("#message").innerHTML = `Agregaste ${productId} was added to cart`;
+//       setTimeout(() => {
+//         document.querySelector("#message").innerHTML = "";
+//       }, 2500);
+//     } else {
+//       document.querySelector("#message").innerHTML = "";
+//     }
+//   }
+// };
 const saveCart = () => {
   if (productsCart.length > 0) {
     localStorage.setItem("productsCart", JSON.stringify(productsCart));
   }
 };
 
-const retrieveCart = () => {
-  return JSON.parse(localStorage.getItem("productsCart")) || [];
-};
-
 const populateCartTable = () => {
-  const cartData = retrieveCart();
+  const cartData = productsCart;
   const tableBody = document.querySelector("#cartTable tbody");
   tableBody.innerHTML = ""; // Clear the table body before populating
 
@@ -110,7 +137,6 @@ const populateCartTable = () => {
       productQuantityMap.set(product.id, 1);
     }
   });
-
   cartData.forEach((product) => {
     const row = document.createElement("tr");
     const productNameCell = document.createElement("td");
@@ -140,27 +166,5 @@ const populateCartTable = () => {
   });
 };
 
-// const populateCartTable = () => {
-//   const cartData = retrieveCart();
-//   const tableBody = document.querySelector("#cartTable tbody");
-//   tableBody.innerHTML = ""; // Clear the table body before populating
-
-//   cartData.forEach((product) => {
-//     const row = document.createElement("tr");
-//     const productNameCell = document.createElement("td");
-//     const productCategoryCell = document.createElement("td");
-//     const productPriceCell = document.createElement("td");
-
-//     productNameCell.textContent = product.title; // Assuming the product object has a 'name' property
-//     productCategoryCell.textContent = product.category; // Assuming the product object has a 'category' property
-//     productPriceCell.textContent = "$" + product.price; // Assuming the product object has a 'price' property
-
-//     row.appendChild(productNameCell);
-//     row.appendChild(productCategoryCell);
-//     row.appendChild(productPriceCell);
-//     tableBody.appendChild(row);
-//   });
-// };
-
-// Call the function to populate the table when the page loads or whenever needed
+// esta funcion deberia de llamarse al presionar un boton para que sea mas dinamica
 populateCartTable();
