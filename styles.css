@@ -576,6 +576,10 @@ video {
   z-index: 50;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -594,6 +598,14 @@ video {
 
 .mr-auto {
   margin-right: auto;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.block {
+  display: block;
 }
 
 .flex {
@@ -701,8 +713,30 @@ video {
   padding-bottom: 20rem;
 }
 
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
 .pb-7 {
   padding-bottom: 1.75rem;
+}
+
+.pe-2 {
+  -webkit-padding-end: 0.5rem;
+          padding-inline-end: 0.5rem;
+}
+
+.ps-3 {
+  -webkit-padding-start: 0.75rem;
+          padding-inline-start: 0.75rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
 }
 
 .text-2xl {
@@ -900,6 +934,32 @@ img#asideCreamMush{
   padding: 20px;
   min-height: 400px;
   min-width: 300px;
+}
+
+#cart{
+  background-color: #f3c680;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  padding-bottom: 16px
+}
+
+thead {
+  background-color: black !important;
+  color: var(--cream) !important;
+  border-radius: 20px;
+}
+
+th, td {
+  padding: 16px !important;
+  margin: 6px;
+}
+
+tbody {
+  background-color: var(--cream)!important;
+}
+
+footer {
+  background-color: var(--green);
 }
 
 @media (min-width: 1024px) {

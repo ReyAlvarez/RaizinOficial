@@ -1,5 +1,3 @@
-// import { addToCart, saveCart, productsCart, showCartItems } from "./cart.js";
-// import { saveCart } from "./cart.js";
 import { productList } from "./json/productsRaizin.js";
 
 // <===================== Nav Bar Begins =====================>
@@ -34,7 +32,7 @@ const addClickToCartBTN = () => {
     button.addEventListener("click", (e) => {
       addToCart(e.target.id);
       saveCart();
-      showMessage(`Agregaste ${e.target.id} al carrito`);
+      // showMessage(`Agregaste ${e.target.id} al carrito`);
       console.log(productsCart);
 
       // showMessage("El producto se agrego correctamente al carrito 😃");
@@ -99,22 +97,70 @@ const populateCartTable = () => {
   const tableBody = document.querySelector("#cartTable tbody");
   tableBody.innerHTML = ""; // Clear the table body before populating
 
+  // Use a map to store the product IDs and their corresponding quantities
+  const productQuantityMap = new Map();
+
+  cartData.forEach((product) => {
+    // Check if the product ID already exists in the map
+    if (productQuantityMap.has(product.id)) {
+      // If it exists, increment the quantity
+      productQuantityMap.set(product.id, productQuantityMap.get(product.id) + 1);
+    } else {
+      // If it doesn't exist, set the quantity to 1 and add the product ID to the map
+      productQuantityMap.set(product.id, 1);
+    }
+  });
+
   cartData.forEach((product) => {
     const row = document.createElement("tr");
     const productNameCell = document.createElement("td");
-    const productPriceCell = document.createElement("td");
     const productCategoryCell = document.createElement("td");
+    const productPriceCell = document.createElement("td");
+    const productQuantityCell = document.createElement("td");
+    const productTotalCell = document.createElement("td");
 
-    productNameCell.textContent = product.title; // Assuming the product object has a 'name' property
-    productPriceCell.textContent = product.price; // Assuming the product object has a 'price' property
-    productCategoryCell.textContent = product.category; // Assuming the product object has a 'category' property
+    productNameCell.textContent = product.title;
+    productCategoryCell.textContent = product.category;
+    productPriceCell.textContent = "$" + product.price.toFixed(2);
+
+    // Get the quantity for the current product from the map
+    const quantity = productQuantityMap.get(product.id);
+    productQuantityCell.textContent = quantity;
+
+    // Calculate the total price for the product (price * quantity)
+    const totalPrice = product.price * quantity;
+    productTotalCell.textContent = "$" + totalPrice.toFixed(2); // Display the total price with 2 decimal places
 
     row.appendChild(productNameCell);
-    row.appendChild(productPriceCell);
     row.appendChild(productCategoryCell);
+    row.appendChild(productPriceCell);
+    row.appendChild(productQuantityCell);
+    row.appendChild(productTotalCell);
     tableBody.appendChild(row);
   });
 };
+
+// const populateCartTable = () => {
+//   const cartData = retrieveCart();
+//   const tableBody = document.querySelector("#cartTable tbody");
+//   tableBody.innerHTML = ""; // Clear the table body before populating
+
+//   cartData.forEach((product) => {
+//     const row = document.createElement("tr");
+//     const productNameCell = document.createElement("td");
+//     const productCategoryCell = document.createElement("td");
+//     const productPriceCell = document.createElement("td");
+
+//     productNameCell.textContent = product.title; // Assuming the product object has a 'name' property
+//     productCategoryCell.textContent = product.category; // Assuming the product object has a 'category' property
+//     productPriceCell.textContent = "$" + product.price; // Assuming the product object has a 'price' property
+
+//     row.appendChild(productNameCell);
+//     row.appendChild(productCategoryCell);
+//     row.appendChild(productPriceCell);
+//     tableBody.appendChild(row);
+//   });
+// };
 
 // Call the function to populate the table when the page loads or whenever needed
 populateCartTable();

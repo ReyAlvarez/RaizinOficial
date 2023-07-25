@@ -187,3 +187,30 @@ border-radius: 10p solid black;
   min-height: 400px;
   min-width: 300px;
 }
+
+#cart{
+  background-color: #f3c680;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  padding-bottom: 16px  
+}
+
+thead {
+  background-color: black !important;
+  color: var(--cream) !important;
+  border-radius: 20px;
+}
+
+th, td {
+  padding: 16px !important;
+  margin: 6px;
+}
+
+tbody {
+  background-color: var(--cream)!important;
+  
+}
+
+footer {
+  background-color: var(--green);
+}
