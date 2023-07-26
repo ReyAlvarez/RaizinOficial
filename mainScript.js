@@ -1,5 +1,12 @@
 import { productList } from "./json/productsRaizin.js";
 const confirmBtn = document.querySelector("#confirmBtn");
+const confirmOrder = document.querySelector("#confirmOrder");
+confirmBtn.addEventListener("click", () => {
+  confirmOrder.innerHTML = "Tu compra fue realizada correctamente";
+  setTimeout(() => {
+    confirmOrder.innerHTML = "";
+  }, 2500);
+});
 // <===================== Nav Bar Begins =====================>
 const container = document.querySelector("#cards-container");
 const burger_btn = document.querySelector("#burger-btn");
@@ -103,10 +110,37 @@ const addToCart = (productId) => {
   }
 };
 
+const subtractFromCart = (productId) => {
+  if (productId > 0) {
+    const index = productsCart.findIndex((product) => product.id === productId);
+    if (index !== -1) {
+      productsCart[index].quantity--;
+      if (productsCart[index].quantity === 0) {
+        productsCart.splice(index, 1); // Remove the product from the cart if quantity becomes 0
+      }
+      saveCart();
+      populateCartTable(); // Update the cart table after subtracting
+    }
+  }
+};
+
+const deleteFromCart = (productId) => {
+  if (productId > 0) {
+    const index = productsCart.findIndex((product) => product.id === productId);
+    if (index !== -1) {
+      productsCart.splice(index, 1); // Remove the product from the cart
+      saveCart();
+      populateCartTable(); // Update the cart table after deleting
+    }
+  }
+};
+
 const saveCart = () => {
   // Guardar productsCart en el local storage
   localStorage.setItem("cart", JSON.stringify(productsCart));
 };
+
+// Cargar los items del carro desde Local Storage y mostrarlos en la página
 
 const populateCartTable = () => {
   const tableBody = document.querySelector("#cartTable tbody");
@@ -119,6 +153,7 @@ const populateCartTable = () => {
     const productPriceCell = document.createElement("td");
     const productQuantityCell = document.createElement("td");
     const productTotalCell = document.createElement("td");
+    const productActionsCell = document.createElement("td"); // Cell for buttons
 
     productNameCell.textContent = product.title;
     productCategoryCell.textContent = product.category;
@@ -129,11 +164,40 @@ const populateCartTable = () => {
     const totalPrice = product.price * product.quantity;
     productTotalCell.textContent = "$" + totalPrice.toFixed(2); // Display the total price with 2 decimal places
 
+    // Create buttons for actions
+    const addButton = document.createElement("button");
+    addButton.classList.add("quantity-btn");
+    addButton.textContent = " + ";
+    addButton.addEventListener("click", () => {
+      addToCart(product.id); // Call the addToCart function to increase quantity
+    });
+
+    const subtractButton = document.createElement("button");
+    subtractButton.classList.add("quantity-btn");
+    subtractButton.textContent = " - ";
+    subtractButton.addEventListener("click", () => {
+      subtractFromCart(product.id); // Call a new function to decrease quantity (will add this below)
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-btn");
+    deleteButton.textContent = "Borrar";
+    deleteButton.addEventListener("click", () => {
+      deleteFromCart(product.id); // Call a new function to remove the product from cart (will add this below)
+    });
+
+    // Append buttons to the actions cell
+    productActionsCell.appendChild(addButton);
+    productActionsCell.appendChild(subtractButton);
+    productActionsCell.appendChild(deleteButton);
+
     row.appendChild(productNameCell);
     row.appendChild(productCategoryCell);
     row.appendChild(productPriceCell);
     row.appendChild(productQuantityCell);
     row.appendChild(productTotalCell);
+    row.appendChild(productActionsCell); // Append the actions cell to the row
+
     tableBody.appendChild(row);
   });
 };

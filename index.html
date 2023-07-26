@@ -16,7 +16,7 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="sweetalert2.min.css" />
+    <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
     <link rel="stylesheet" href="./styles.css" />
     <title>Raizin Oficial</title>
   </head>
@@ -103,13 +103,12 @@
       <div class="container flex flex-col">
         <h3 class="flex justify-center" id="products_title">Productos</h3>
         <div class="container place-items-center grid grid-cols-3 gap-4 py-6" id="cards-container"></div>
-        <div class="mensajes-container">
-          <div class="class-alertas"></div>
-        </div>
+
         <div class="mensajes-container">
           <div id="message"></div>
         </div>
       </div>
+      <!-- Cart Section Begins -->
       <section id="cart" class="flex-col justify-center">
         <div>
           <h1 id="cart__Title">Mis compras</h1>
@@ -123,21 +122,41 @@
                 <th id="product_price">Valor $</th>
                 <th id="product_quantity">Cantidad</th>
                 <th id="product_total">Total</th>
+                <th>Acciones</th>
+                <!-- Added column for buttons -->
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Nombre</td>
-                <td>Categoría</td>
-                <td>Importe</td>
-              </tr>
+              <!-- Rows for each product will be populated dynamically -->
             </tbody>
           </table>
+          <div class="total-products-container">
+            <p>
+              Cantidad de Productos: <b><span id="totalProducts">0</span></b>
+            </p>
+          </div>
+          <!-- Discounts and shipping -->
+          <div class="shipping-section">
+            <label for="shipping">Envio:</label>
+            <input type="number" id="shipping" step="0.01" value="0.00" />
+          </div>
+          <div class="discount-section">
+            <label for="discount">Codigo del bien:</label>
+            <input type="text" id="discount" />
+            <button id="applyDiscountBtn"><---Probar suerte</button>
+          </div>
           <div class="justify-center">
-            <button id="confirmBtn" class="button flex btn btn-success mt-3">CONFIRMAR</button>
+            <button id="confirmBtn" class="button flex btn btn-success mt-3" action="https://formspree.io/f/xqkvaolj" method="POST" type="submit">
+              CONFIRMAR PEDIDO
+            </button>
+          </div>
+          <div class="mensajes-container">
+            <div id="confirmOrder"></div>
           </div>
         </div>
       </section>
+
+      <!-- Cart Section Ends -->
     </main>
     <footer>
       <div class="container-fluid row text-light pt-3 m-0">

@@ -225,6 +225,36 @@ tbody {
   
 }
 
+/* Styles for the quantity buttons */
+button.quantity-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+button.quantity-btn:hover {
+  background-color: #45a049;
+}
+
+/* Styles for the delete button */
+button.delete-btn {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+
 footer {
   background-color: var(--green);
 }
