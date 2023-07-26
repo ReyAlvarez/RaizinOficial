@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
    --cream: #fef5e6; 
    --green: #869470;

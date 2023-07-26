@@ -4,7 +4,7 @@
   {
     "id": 1,
     "title": "Melena de León en capsulas",
-    "description": "La Melena de león (Hericium erinaceus) o, simplemente Hericium, es un hongo medicinal ampliamente utilizado por sus beneficios en el organismo. También es conocido como ’ Yamabushitake’, ‘Hou Tou Gu’ (seta de cabeza de mono), ‘hongo erizo’ o ‘pom-pom-blanc’. Cabe destacar su atractivo visual por su imponente cuerpo fructífero globular con unas espinas blancas colgantes que dan la impresión de una cascada congelada o de una majestuosa melena de león (de ahí su curioso nombre popular).",
+    "description": "La melena de león es un hongo medicinal con propiedades neuroprotectoras, estimula el crecimiento de células nerviosas y fortalece el sistema inmunológico. Beneficia la salud cerebral, promueve la función cognitiva y puede tener efectos positivos en el bienestar general.",
     "image": "/images/products/Lions-Mane-Mushroom-Drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -14,7 +14,7 @@
   {
     "id": 2,
     "title": "Reishi en capsulas",
-    "description": "El Reishi (Ganoderma lucidum) u ‘hongo de la eterna juventud’ es uno de los hongos medicinales más reconocidos y cuenta con una larga trayectoria de uso en la medicina tradicional oriental, como la medicina tradicional china. En Asia es un «símbolo de longevidad y felicidad». Por ello se considera ‘el rey de los hongos medicinales’ y es habitual referirse a él con otros nombres como ‘Ling Zhi’, ‘Chizhi’ o ‘Youngzhi’.",
+    "description": "El reishi es un hongo medicinal con propiedades adaptogénicas y fortalecedoras del sistema inmunológico, utilizado para mejorar la vitalidad y promover la longevidad. Es un potente antioxidante y se investiga por sus beneficios para combatir el estrés y mejorar la salud en general.",
     "image": "/images/products/reishi-mushroom-illustration.jpg",
     "quantity": 60,
     "price": 5500,
@@ -24,7 +24,7 @@
   {
     "id": 3,
     "title": "Cordyceps en capsulas",
-    "description": "El Cordyceps (Cordyceps sinensis), uno de los secretos mejor guardados del Tíbet, es uno de los hongos medicinales más reconocidos en la medicina tradicional china. Desde la década de los 80 se han contabilizado más de 2.000 artículos científicos sobre este hongo y la prensa habla de sus «posibles beneficios» en medios como la BBC británica.",
+    "description": "El cordyceps es un hongo medicinal valorado por sus beneficios energizantes y adaptogénicos. Mejora la resistencia física, fortalece el sistema inmunológico y puede aumentar la vitalidad. Además, se le atribuyen propiedades antiinflamatorias y antioxidantes, promoviendo la salud en general.",
     "image": "/images/products/Cordyceps-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -35,7 +35,7 @@
   {
     "id": 4,
     "title": "Shiitake en capsulas",
-    "description": "El  Shiitake (Lentinula edodes) u hongo del bosque es conocido como un hongo medicinal comestible y su uso gastronómico está muy extendido. No obstante, su contenido en sustancias bioactivas como compuestos fenólicos o  inmunomoduladores hacen que también sea de gran interés en el cuidado de la salud.",
+    "description": "El shiitake es un hongo con numerosos beneficios para la salud. Es conocido por fortalecer el sistema inmunológico, mejorar la salud cardiovascular, regular el colesterol y poseer propiedades antioxidantes y antiinflamatorias. También se le atribuyen efectos positivos en la salud ósea y la función cognitiva.",
     "image": "/images/products/Chaga-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -45,7 +45,7 @@
   {
     "id": 5,
     "title": "Chaga en capsulas",
-    "description": "El Chaga (Inonotus obliquus) es una especie micológica de larga tradición en la medicina siberiana, en la que se empleaba para tratar «problemas intestinales, de hígado y corazón». Desde los años 60 se han realizado estudios sobre su acción en procesos oncológicos, enfermedades cardiovasculares y crónicas. También se conoce popularmente como ‘Tsyr’ y se considera un hongo medicinal que crece de forma natural en los bosques más septentrionales del continente europeo. A consecuencia de las propiedades inmunomoduladoras y antioxidantes de los polisacáridos que contiene, se conoce como la ‘perla negra’ o el ‘diamante de los bosques’. ",
+    "description": "La chaga es un hongo con poderosos beneficios para la salud. Es reconocido por su capacidad para fortalecer el sistema inmunológico, combatir la inflamación, promover la salud digestiva, regular el azúcar en la sangre y apoyar la función hepática. Además, se le atribuyen propiedades antioxidantes y antitumorales.",
     "image": "/images/products/Chaga-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -55,7 +55,7 @@
   {
     "id": 6,
     "title": "Cola de Pavo en capsulas",
-    "description": "El Coriolus versicolor o Trametes versicolor es un hongo muy común que crece sobre sustratos orgánicos como troncos de árboles de los que obtiene su alimento. Dada su consistencia leñosa, no se considera un buen comestible. No obstante, su uso sí es habitual en infusión o en extracto gracias a su composición bioquímica.También se conoce como Cola de pavo ya que su carpóforo es muy similar a la cola de un pavo real. Debido a la variedad cromática que presenta, también se conoce como ‘Seta Arcoiris’. Entre otros nombres, el Coriolus se conoce como ‘Yun-zhi’ o ‘Kawarakate’. ",
+    "description": "La cola de pavo es un hongo con potenciales beneficios en el cáncer. Se ha estudiado por sus propiedades antitumorales y su capacidad para fortalecer el sistema inmunológico, promover la apoptosis celular y reducir la proliferación de células cancerosas. Sin embargo, se requiere más investigación en este campo.",
     "image": "/images/products/Turkey-Tail-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -68,7 +68,7 @@
   {
     "id": 7,
     "title": "Melena de León en tintura",
-    "description": "La Melena de león (Hericium erinaceus) o, simplemente Hericium, es un hongo medicinal ampliamente utilizado por sus beneficios en el organismo. También es conocido como ’ Yamabushitake’, ‘Hou Tou Gu’ (seta de cabeza de mono), ‘hongo erizo’ o ‘pom-pom-blanc’. Cabe destacar su atractivo visual por su imponente cuerpo fructífero globular con unas espinas blancas colgantes que dan la impresión de una cascada congelada o de una majestuosa melena de león (de ahí su curioso nombre popular).",
+    "description": "La melena de león es un hongo medicinal con propiedades neuroprotectoras, estimula el crecimiento de células nerviosas y fortalece el sistema inmunológico. Beneficia la salud cerebral, promueve la función cognitiva y puede tener efectos positivos en el bienestar general.",
     "image": "/images/products/Lions-Mane-Mushroom-Drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -78,7 +78,7 @@
   {
     "id": 8,
     "title": "Reishi",
-    "description": "El Reishi (Ganoderma lucidum) u ‘hongo de la eterna juventud’ es uno de los hongos medicinales más reconocidos y cuenta con una larga trayectoria de uso en la medicina tradicional oriental, como la medicina tradicional china. En Asia es un «símbolo de longevidad y felicidad». Por ello se considera ‘el rey de los hongos medicinales’ y es habitual referirse a él con otros nombres como ‘Ling Zhi’, ‘Chizhi’ o ‘Youngzhi’.",
+    "description": "El reishi es un hongo medicinal con propiedades adaptogénicas y fortalecedoras del sistema inmunológico, utilizado para mejorar la vitalidad y promover la longevidad. Es un potente antioxidante y se investiga por sus beneficios para combatir el estrés y mejorar la salud en general.",
     "image": "/images/products/reishi-mushroom-illustration.jpg",
     "quantity": 60,
     "price": 5500,
@@ -88,7 +88,7 @@
   {
     "id": 9,
     "title": "Cordyceps",
-    "description": "El Cordyceps (Cordyceps sinensis), uno de los secretos mejor guardados del Tíbet, es uno de los hongos medicinales más reconocidos en la medicina tradicional china. Desde la década de los 80 se han contabilizado más de 2.000 artículos científicos sobre este hongo y la prensa habla de sus «posibles beneficios» en medios como la BBC británica.",
+    "description": "El cordyceps es un hongo medicinal valorado por sus beneficios energizantes y adaptogénicos. Mejora la resistencia física, fortalece el sistema inmunológico y puede aumentar la vitalidad. Además, se le atribuyen propiedades antiinflamatorias y antioxidantes, promoviendo la salud en general.",
     "image": "/images/products/Cordyceps-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -99,7 +99,7 @@
   {
     "id": 10,
     "title": "Shiitake",
-    "description": "El  Shiitake (Lentinula edodes) u hongo del bosque es conocido como un hongo medicinal comestible y su uso gastronómico está muy extendido. No obstante, su contenido en sustancias bioactivas como compuestos fenólicos o  inmunomoduladores hacen que también sea de gran interés en el cuidado de la salud.",
+    "description": "El shiitake es un hongo con numerosos beneficios para la salud. Es conocido por fortalecer el sistema inmunológico, mejorar la salud cardiovascular, regular el colesterol y poseer propiedades antioxidantes y antiinflamatorias. También se le atribuyen efectos positivos en la salud ósea y la función cognitiva.",
     "image": "/images/products/Chaga-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -109,7 +109,7 @@
   {
     "id": 11,
     "title": "Chaga",
-    "description": "El Chaga (Inonotus obliquus) es una especie micológica de larga tradición en la medicina siberiana, en la que se empleaba para tratar «problemas intestinales, de hígado y corazón». Desde los años 60 se han realizado estudios sobre su acción en procesos oncológicos, enfermedades cardiovasculares y crónicas. También se conoce popularmente como ‘Tsyr’ y se considera un hongo medicinal que crece de forma natural en los bosques más septentrionales del continente europeo. A consecuencia de las propiedades inmunomoduladoras y antioxidantes de los polisacáridos que contiene, se conoce como la ‘perla negra’ o el ‘diamante de los bosques’. ",
+    "description": "La chaga es un hongo con poderosos beneficios para la salud. Es reconocido por su capacidad para fortalecer el sistema inmunológico, combatir la inflamación, promover la salud digestiva, regular el azúcar en la sangre y apoyar la función hepática. Además, se le atribuyen propiedades antioxidantes y antitumorales.",
     "image": "/images/products/Chaga-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -119,7 +119,7 @@
   {
     "id": 12,
     "title": "Cola de Pavo",
-    "description": "El Coriolus versicolor o Trametes versicolor es un hongo muy común que crece sobre sustratos orgánicos como troncos de árboles de los que obtiene su alimento. Dada su consistencia leñosa, no se considera un buen comestible. No obstante, su uso sí es habitual en infusión o en extracto gracias a su composición bioquímica.También se conoce como Cola de pavo ya que su carpóforo es muy similar a la cola de un pavo real. Debido a la variedad cromática que presenta, también se conoce como ‘Seta Arcoiris’. Entre otros nombres, el Coriolus se conoce como ‘Yun-zhi’ o ‘Kawarakate’. ",
+    "description": "La cola de pavo es un hongo con potenciales beneficios en el cáncer. Se ha estudiado por sus propiedades antitumorales y su capacidad para fortalecer el sistema inmunológico, promover la apoptosis celular y reducir la proliferación de células cancerosas. Sin embargo, se requiere más investigación en este campo.",
     "image": "/images/products/Turkey-Tail-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -130,7 +130,7 @@
   {
     "id": 13,
     "title": "Melena de León en polvo",
-    "description": "La Melena de león (Hericium erinaceus) o, simplemente Hericium, es un hongo medicinal ampliamente utilizado por sus beneficios en el organismo. También es conocido como ’ Yamabushitake’, ‘Hou Tou Gu’ (seta de cabeza de mono), ‘hongo erizo’ o ‘pom-pom-blanc’. Cabe destacar su atractivo visual por su imponente cuerpo fructífero globular con unas espinas blancas colgantes que dan la impresión de una cascada congelada o de una majestuosa melena de león (de ahí su curioso nombre popular).",
+    "description": "La melena de león es un hongo medicinal con propiedades neuroprotectoras, estimula el crecimiento de células nerviosas y fortalece el sistema inmunológico. Beneficia la salud cerebral, promueve la función cognitiva y puede tener efectos positivos en el bienestar general.",
     "image": "/images/products/Lions-Mane-Mushroom-Drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -140,7 +140,7 @@
   {
     "id": 14,
     "title": "Reishi en polvo",
-    "description": "El Reishi (Ganoderma lucidum) u ‘hongo de la eterna juventud’ es uno de los hongos medicinales más reconocidos y cuenta con una larga trayectoria de uso en la medicina tradicional oriental, como la medicina tradicional china. En Asia es un «símbolo de longevidad y felicidad». Por ello se considera ‘el rey de los hongos medicinales’ y es habitual referirse a él con otros nombres como ‘Ling Zhi’, ‘Chizhi’ o ‘Youngzhi’.",
+    "description": "El reishi es un hongo medicinal con propiedades adaptogénicas y fortalecedoras del sistema inmunológico, utilizado para mejorar la vitalidad y promover la longevidad. Es un potente antioxidante y se investiga por sus beneficios para combatir el estrés y mejorar la salud en general.",
     "image": "/images/products/reishi-mushroom-illustration.jpg",
     "quantity": 60,
     "price": 5500,
@@ -150,7 +150,7 @@
   {
     "id": 15,
     "title": "Cordyceps en polvo",
-    "description": "El Cordyceps (Cordyceps sinensis), uno de los secretos mejor guardados del Tíbet, es uno de los hongos medicinales más reconocidos en la medicina tradicional china. Desde la década de los 80 se han contabilizado más de 2.000 artículos científicos sobre este hongo y la prensa habla de sus «posibles beneficios» en medios como la BBC británica.",
+    "description": "El cordyceps es un hongo medicinal valorado por sus beneficios energizantes y adaptogénicos. Mejora la resistencia física, fortalece el sistema inmunológico y puede aumentar la vitalidad. Además, se le atribuyen propiedades antiinflamatorias y antioxidantes, promoviendo la salud en general.",
     "image": "/images/products/Cordyceps-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -161,7 +161,7 @@
   {
     "id": 16,
     "title": "Shiitake en polvo",
-    "description": "El  Shiitake (Lentinula edodes) u hongo del bosque es conocido como un hongo medicinal comestible y su uso gastronómico está muy extendido. No obstante, su contenido en sustancias bioactivas como compuestos fenólicos o  inmunomoduladores hacen que también sea de gran interés en el cuidado de la salud.",
+    "description": "El shiitake es un hongo con numerosos beneficios para la salud. Es conocido por fortalecer el sistema inmunológico, mejorar la salud cardiovascular, regular el colesterol y poseer propiedades antioxidantes y antiinflamatorias. También se le atribuyen efectos positivos en la salud ósea y la función cognitiva.",
     "image": "/images/products/Chaga-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -170,8 +170,8 @@
   },
   {
     "id": 17,
-    "title": "Chag en polvo",
-    "description": "El Chaga (Inonotus obliquus) es una especie micológica de larga tradición en la medicina siberiana, en la que se empleaba para tratar «problemas intestinales, de hígado y corazón». Desde los años 60 se han realizado estudios sobre su acción en procesos oncológicos, enfermedades cardiovasculares y crónicas. También se conoce popularmente como ‘Tsyr’ y se considera un hongo medicinal que crece de forma natural en los bosques más septentrionales del continente europeo. A consecuencia de las propiedades inmunomoduladoras y antioxidantes de los polisacáridos que contiene, se conoce como la ‘perla negra’ o el ‘diamante de los bosques’. ",
+    "title": "Chaga en polvo",
+    "description": "La chaga es un hongo con poderosos beneficios para la salud. Es reconocido por su capacidad para fortalecer el sistema inmunológico, combatir la inflamación, promover la salud digestiva, regular el azúcar en la sangre y apoyar la función hepática. Además, se le atribuyen propiedades antioxidantes y antitumorales.",
     "image": "/images/products/Chaga-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
@@ -181,7 +181,7 @@
   {
     "id": 18,
     "title": "Cola de Pavo en polvo",
-    "description": "El Coriolus versicolor o Trametes versicolor es un hongo muy común que crece sobre sustratos orgánicos como troncos de árboles de los que obtiene su alimento. Dada su consistencia leñosa, no se considera un buen comestible. No obstante, su uso sí es habitual en infusión o en extracto gracias a su composición bioquímica.También se conoce como Cola de pavo ya que su carpóforo es muy similar a la cola de un pavo real. Debido a la variedad cromática que presenta, también se conoce como ‘Seta Arcoiris’. Entre otros nombres, el Coriolus se conoce como ‘Yun-zhi’ o ‘Kawarakate’. ",
+    "description": "La cola de pavo es un hongo con potenciales beneficios en el cáncer. Se ha estudiado por sus propiedades antitumorales y su capacidad para fortalecer el sistema inmunológico, promover la apoptosis celular y reducir la proliferación de células cancerosas. Sin embargo, se requiere más investigación en este campo.",
     "image": "/images/products/Turkey-Tail-mushroom-drawing.jpg",
     "quantity": 60,
     "price": 5500,
