@@ -1,6 +1,7 @@
 import { productList } from "./json/productsRaizin.js";
 const confirmBtn = document.querySelector("#confirmBtn");
 const confirmOrder = document.querySelector("#confirmOrder");
+
 confirmBtn.addEventListener("click", () => {
   confirmOrder.innerHTML = "Tu compra fue realizada correctamente";
   setTimeout(() => {
@@ -18,7 +19,7 @@ burger_btn.addEventListener("click", () => {
 });
 // <===================== Nav Bar Ends =====================>
 
-// Agregamos un evento para cargar los productos cuando el JSON esté listo
+// Add and evennt once the JSON is ready
 document.addEventListener("DOMContentLoaded", () => {
   // Obtenemos los datos del JSON usando fetch
   fetch("./json/productsRaizin.json")
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching product data:", error);
     });
 });
-
+//Create the card dynamically
 const dynamicCards = (product) => {
   return `<div class="card flex">              
                 <div class="product_image"><img class="inline-block h-12 w-12 rounded-full ring-2 ring-white" src=${product.image}></div>
@@ -99,7 +100,8 @@ const addToCart = (productId) => {
       }
 
       saveCart();
-      populateCartTable(); // Llamar a populateCartTable para actualizar la tabla
+      updateGrandTotal();
+      updateTotalProducts();
       document.querySelector("#message").innerHTML = `Agregaste ${selectedProduct.title} al carrito`;
       setTimeout(() => {
         document.querySelector("#message").innerHTML = "";
@@ -136,12 +138,57 @@ const deleteFromCart = (productId) => {
 };
 
 const saveCart = () => {
-  // Guardar productsCart en el local storage
+  // Save products to local storage
   localStorage.setItem("cart", JSON.stringify(productsCart));
 };
 
-// Cargar los items del carro desde Local Storage y mostrarlos en la página
+// Function to apply the discount code and update the grand total
 
+const applyDiscount = () => {
+  const discountCode = document.querySelector("#discount").value;
+  // aplly your discount code and calculate the discount amount
+  const discountAmount = 10;
+  // Add event listener for the Apply Discount button
+  document.querySelector("#applyDiscount").addEventListener("click", applyDiscount);
+
+  // Calculate the grand total with the discount applied
+  const grandTotal = calculateGrandTotal();
+  const totalWithDiscount = grandTotal - discountAmount;
+
+  // Display the updated grand total
+  document.querySelector("#grandTotal").textContent = "$" + totalWithDiscount.toFixed(2);
+};
+
+// Function to update the grand total dynamically
+const updateGrandTotal = () => {
+  const grandTotal = calculateGrandTotal();
+  document.querySelector("#grandTotal").textContent = "$" + grandTotal.toFixed(2);
+};
+
+// Function to calculate the grand total
+const calculateGrandTotal = () => {
+  let total = 0;
+  productsCart.forEach((product) => {
+    const totalPrice = product.price * product.quantity;
+    total += totalPrice;
+  });
+  // Add shipping to the total
+  const shipping = parseFloat(document.querySelector("#shipping").value);
+  total += isNaN(shipping) ? 0 : shipping;
+
+  return total;
+};
+
+// Function to update the total products count
+const updateTotalProducts = () => {
+  const totalProducts = productsCart.reduce((acc, product) => acc + product.quantity, 0);
+  document.querySelector("#totalProducts").textContent = totalProducts;
+};
+
+const grandTotal = calculateGrandTotal();
+document.querySelector("#grandTotal").textContent = "$" + grandTotal.toFixed(2);
+
+// Load items from Local storage and show them on the cart
 const populateCartTable = () => {
   const tableBody = document.querySelector("#cartTable tbody");
   tableBody.innerHTML = ""; // Clear the table body before populating
@@ -169,23 +216,24 @@ const populateCartTable = () => {
     addButton.classList.add("quantity-btn");
     addButton.textContent = " + ";
     addButton.addEventListener("click", () => {
-      addToCart(product.id); // Call the addToCart function to increase quantity
+      addToCart(product.id); // increase quantity
     });
 
     const subtractButton = document.createElement("button");
     subtractButton.classList.add("quantity-btn");
     subtractButton.textContent = " - ";
     subtractButton.addEventListener("click", () => {
-      subtractFromCart(product.id); // Call a new function to decrease quantity (will add this below)
+      subtractFromCart(product.id); // decrease quantity
     });
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-btn");
     deleteButton.textContent = "Borrar";
     deleteButton.addEventListener("click", () => {
-      deleteFromCart(product.id); // Call a new function to remove the product from cart (will add this below)
+      deleteFromCart(product.id); //remove the product from cart
     });
 
+    updateTotalProducts();
     // Append buttons to the actions cell
     productActionsCell.appendChild(addButton);
     productActionsCell.appendChild(subtractButton);
@@ -202,5 +250,5 @@ const populateCartTable = () => {
   });
 };
 
-// Llamar a populateCartTable una vez que se carga la página
+// Invoke populateCartTable once the page is loaded
 populateCartTable();
