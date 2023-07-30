@@ -151,10 +151,11 @@ const subtractFromCart = (productId) => {
   updateProductsCounter();
   renderCartTable(cartUpdated);
 };
-// const deleteFromCart = (productId) => {
-//   const cartUpdated = productsCart.filter((product) => product.id !== productId);
-//   renderCartTable(cartUpdated);
-// };
+
+const deleteFromCart = (productId) => {
+  const cartUpdated = cart.filter((product) => product.id !== productId);
+  renderCartTable(cartUpdated);
+};
 
 // confirmBtn.addEventListener("click", () => {
 //   Swal.fire({
