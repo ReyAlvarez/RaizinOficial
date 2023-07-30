@@ -16,7 +16,8 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css" />
     <link rel="stylesheet" href="./styles.css" />
     <title>Raizin Oficial</title>
   </head>
@@ -129,38 +130,27 @@
             <tbody>
               <!-- Rows for each product will be populated dynamically -->
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5" class="text-end">Gran Total:</td>
+                <td id="grandTotal"></td>
+              </tr>
+            </tfoot>
           </table>
-          <!-- Inside the cart section, after the cartTable -->
-          <div class="shipping-discount-container">
-            <div class="shipping-container">
-              <label for="shipping">Envio:</label>
-              <input type="number" id="shipping" min="0" step="0.01" />
-            </div>
-            <div class="discount-container">
-              <label for="discount">Codigo de descuento:</label>
-              <input type="text" id="discount" />
-              <button id="applyDiscount">OK</button>
-            </div>
-          </div>
+        </div>
 
-          <!-- Inside the cart section, before the cartTable -->
-          <div class="total-products-container">
-            <p>Cantidad de productos que llevas: <span id="totalProducts">0</span></p>
-          </div>
+        <!-- Inside the cart section, before the cartTable -->
+        <div class="total-products-container">
+          <p>Cantidad de productos que llevas: <span id="totalProducts">0</span></p>
+        </div>
 
-          <!-- Inside the cart section, after the cartTable -->
-          <div class="grand-total-container">
-            <p>Total final: <span id="grandTotal">$0.00</span></p>
-          </div>
-
-          <div class="justify-center">
-            <button id="confirmBtn" class="button flex btn btn-success mt-3" action="https://formspree.io/f/xqkvaolj" method="POST" type="submit">
-              CONFIRMAR PEDIDO
-            </button>
-          </div>
-          <div class="mensajes-container">
-            <div id="confirmOrder"></div>
-          </div>
+        <div class="justify-center">
+          <button id="confirmBtn" class="button flex btn btn-success mt-3" action="https://formspree.io/f/xqkvaolj" method="POST" type="submit">
+            CONFIRMAR PEDIDO
+          </button>
+        </div>
+        <div class="mensajes-container">
+          <div id="confirmOrder"></div>
         </div>
       </section>
 
@@ -193,15 +183,13 @@
         </div>
       </div>
     </footer>
-    <!-- <script src="./json/productsRaizin.js" type="module"></script> -->
-    <script src="./json/productsRaizin.json" id="product-data" defer></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="./mainScript.js"></script>
   </body>
 </html>

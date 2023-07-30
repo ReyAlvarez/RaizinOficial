@@ -1,25 +1,25 @@
-import { productList } from "./json/productsRaizin.js";
 const confirmBtn = document.querySelector("#confirmBtn");
 const confirmOrder = document.querySelector("#confirmOrder");
+let productList = [];
+let cart = [];
+let total = 0;
 
-confirmBtn.addEventListener("click", () => {
-  confirmOrder.innerHTML = "Tu compra fue realizada correctamente";
-  setTimeout(() => {
-    confirmOrder.innerHTML = "";
-  }, 2500);
-});
 // <===================== Nav Bar Begins =====================>
 const container = document.querySelector("#cards-container");
 const burger_btn = document.querySelector("#burger-btn");
+document.querySelector("#grandTotal").innerHTML = `$ ${total.toFixed(2)}`;
+// document.querySelector("#grandTotal").innerHTML = `$ ${total.toFixed(2)}`;
+
 burger_btn.addEventListener("click", () => {
   burger_btn.classList.toggle("open");
   const slice = document.querySelector("#slice");
   slice.classList.toggle("open");
   slice.classList.toggle("close");
 });
+
 // <===================== Nav Bar Ends =====================>
 
-// Add and evennt once the JSON is ready
+// Add an event once the JSON is ready
 document.addEventListener("DOMContentLoaded", () => {
   // Obtenemos los datos del JSON usando fetch
   fetch("./json/productsRaizin.json")
@@ -28,13 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
       // Asignamos los datos a la variable productList
       productList.push(...data.products);
       // Cargamos los productos en el contenedor
-      loadProducts(productList);
+      printProducts(productList);
     })
     .catch((error) => {
-      console.error("Error fetching product data:", error);
+      container.innerHTML = `
+      <div class="d-block p-4 bg-danger rounded text-center text-white">
+      <p>Error fetching product data:<p>
+      <br/>
+      <p>${error}</p>
+      </div>
+      `;
     });
+
+  // if (localStorage.getItem("cart")) {
+  //   renderCartTable(localStorage.getItem("cart"));
+  // }
 });
-//Create the card dynamically
+
+//Create a card dynamically
 const dynamicCards = (product) => {
   return `<div class="card flex">              
                 <div class="product_image"><img class="inline-block h-12 w-12 rounded-full ring-2 ring-white" src=${product.image}></div>
@@ -45,155 +56,144 @@ const dynamicCards = (product) => {
           </div>`;
 };
 
-function addClickToCartBTN() {
+// Prints the product list.
+const printProducts = (array) => {
+  container.innerHTML = "";
+  array.forEach((product) => {
+    container.innerHTML += dynamicCards(product);
+  });
+  addListenersToCartBTN();
+};
+
+function addListenersToCartBTN() {
   const buttons = document.querySelectorAll("button.button-addToCart");
   for (let button of buttons) {
     button.addEventListener("click", (e) => {
-      const productId = e.target.id;
-      const selectedProduct = productList.find((product) => product.id === parseInt(productId));
+      const selectedProduct = productList.find((product) => product.id === parseInt(e.target.id));
 
       if (selectedProduct && selectedProduct.stock > 0) {
-        addToCart(productId);
-        document.querySelector("#message").innerHTML = `Agregaste ${selectedProduct.title} al carrito`;
-        setTimeout(() => {
-          document.querySelector("#message").innerHTML = "";
-        }, 2500);
-      } else {
-        document.querySelector("#message").innerHTML = "No hay stock disponible para este producto.";
-        setTimeout(() => {
-          document.querySelector("#message").innerHTML = "";
-        }, 2500);
+        addToCart(e.target.id);
+        Swal.fire({
+          title: `Agregaste ${selectedProduct.title} al carrito`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      } else if (selectedProduct && selectedProduct.stock === 0) {
+        Swal.fire({
+          title: `No hay stock de ${selectedProduct.title}`,
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1000,
+        });
       }
     });
   }
 }
 
-const loadProducts = (array) => {
-  container.innerHTML = "";
-  if (array.length > 0) {
-    array.forEach((product) => {
-      container.innerHTML += dynamicCards(product);
-    });
-    addClickToCartBTN();
-  } else {
-    container.innerHTML = "No hay productos disponibles";
-  }
-};
-
-loadProducts(productList);
-
 // <===================== CART BEGINS =====================>
 
-const productsCart = JSON.parse(localStorage.getItem("cart")) || [];
+// const productsCart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const addToCart = (productId) => {
-  if (productId > 0) {
-    const selectedProduct = productList.find((product) => product.id === parseInt(productId));
+  const selectedProduct = productList.find((product) => product.id === parseInt(productId));
 
-    if (selectedProduct) {
-      // Check if the product is already in the cart
-      const cartItem = productsCart.find((item) => item.id === selectedProduct.id);
-      if (cartItem) {
-        cartItem.quantity++;
-      } else {
-        productsCart.push({ ...selectedProduct, quantity: 1 });
-      }
+  if (selectedProduct.stock <= 0) {
+    Swal.fire({
+      title: `No hay stock de ${selectedProduct.title}`,
+      icon: "error",
+      showConfirmButton: false,
+      timer: 1000,
+    });
 
-      saveCart();
-      updateGrandTotal();
-      updateTotalProducts();
-      document.querySelector("#message").innerHTML = `Agregaste ${selectedProduct.title} al carrito`;
-      setTimeout(() => {
-        document.querySelector("#message").innerHTML = "";
-      }, 2500);
+    return;
+  }
+
+  if (selectedProduct.stock > 0) {
+    // Check if the product is already in the cart
+    const exists = cart.some((product) => product.id === selectedProduct.id);
+
+    if (exists) {
+      const cartUpdated = cart.map((product) => {
+        if (product.id === selectedProduct.id) {
+          product.quantity++;
+          product.stock--;
+          return product;
+        }
+        return product;
+      });
+
+      cart = cartUpdated;
     } else {
-      document.querySelector("#message").innerHTML = "";
+      cart.push({ ...selectedProduct, quantity: 1, stock: selectedProduct.stock - 1 });
     }
+
+    console.log(cart);
+
+    saveCart();
+    calculateGrandTotal(cart);
+    updateProductsCounter();
+    renderCartTable(cart); // Added this line to update the cart table
   }
 };
 
 const subtractFromCart = (productId) => {
-  if (productId > 0) {
-    const index = productsCart.findIndex((product) => product.id === productId);
-    if (index !== -1) {
-      productsCart[index].quantity--;
-      if (productsCart[index].quantity === 0) {
-        productsCart.splice(index, 1); // Remove the product from the cart if quantity becomes 0
-      }
-      saveCart();
-      populateCartTable(); // Update the cart table after subtracting
+  const cartUpdated = cart.map((product) => {
+    if (product.id === productId && product.quantity > 1) {
+      product.quantity--;
+      return product;
     }
-  }
+    return product;
+  });
+  cart = cartUpdated;
+  saveCart();
+  calculateGrandTotal(cartUpdated);
+  updateProductsCounter();
+  renderCartTable(cartUpdated);
 };
+// const deleteFromCart = (productId) => {
+//   const cartUpdated = productsCart.filter((product) => product.id !== productId);
+//   renderCartTable(cartUpdated);
+// };
 
-const deleteFromCart = (productId) => {
-  if (productId > 0) {
-    const index = productsCart.findIndex((product) => product.id === productId);
-    if (index !== -1) {
-      productsCart.splice(index, 1); // Remove the product from the cart
-      saveCart();
-      populateCartTable(); // Update the cart table after deleting
-    }
-  }
-};
+// confirmBtn.addEventListener("click", () => {
+//   Swal.fire({
+//     title: `Tu pedido fue realizado con EXITO`,
+//     icon: "success",
+//     showConfirmButton: false,
+//     timer: 1000,
+//   });
+//   localStorage.removeItem("cart");
+
+//   // A Probar ******************** <<<<------
+// });
 
 const saveCart = () => {
   // Save products to local storage
-  localStorage.setItem("cart", JSON.stringify(productsCart));
-};
-
-// Function to apply the discount code and update the grand total
-
-const applyDiscount = () => {
-  const discountCode = document.querySelector("#discount").value;
-  // aplly your discount code and calculate the discount amount
-  const discountAmount = 10;
-  // Add event listener for the Apply Discount button
-  document.querySelector("#applyDiscount").addEventListener("click", applyDiscount);
-
-  // Calculate the grand total with the discount applied
-  const grandTotal = calculateGrandTotal();
-  const totalWithDiscount = grandTotal - discountAmount;
-
-  // Display the updated grand total
-  document.querySelector("#grandTotal").textContent = "$" + totalWithDiscount.toFixed(2);
+  localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 // Function to update the grand total dynamically
-const updateGrandTotal = () => {
-  const grandTotal = calculateGrandTotal();
-  document.querySelector("#grandTotal").textContent = "$" + grandTotal.toFixed(2);
-};
-
-// Function to calculate the grand total
-const calculateGrandTotal = () => {
-  let total = 0;
-  productsCart.forEach((product) => {
-    const totalPrice = product.price * product.quantity;
-    total += totalPrice;
-  });
-  // Add shipping to the total
-  const shipping = parseFloat(document.querySelector("#shipping").value);
-  total += isNaN(shipping) ? 0 : shipping;
-
-  return total;
-};
-
-// Function to update the total products count
-const updateTotalProducts = () => {
-  const totalProducts = productsCart.reduce((acc, product) => acc + product.quantity, 0);
+const updateProductsCounter = () => {
+  const totalProducts = cart.reduce((acc, product) => acc + product.quantity, 0);
   document.querySelector("#totalProducts").textContent = totalProducts;
 };
 
-const grandTotal = calculateGrandTotal();
-document.querySelector("#grandTotal").textContent = "$" + grandTotal.toFixed(2);
+// Function to calculate the grand total
+const calculateGrandTotal = (productsList) => {
+  productsList.forEach((product) => {
+    const totalProductPrice = product.price * product.quantity;
+    total += totalProductPrice;
+  });
+};
 
 // Load items from Local storage and show them on the cart
-const populateCartTable = () => {
+const renderCartTable = (products) => {
   const tableBody = document.querySelector("#cartTable tbody");
+
   tableBody.innerHTML = ""; // Clear the table body before populating
 
-  productsCart.forEach((product) => {
+  products.forEach((product) => {
     const row = document.createElement("tr");
     const productNameCell = document.createElement("td");
     const productCategoryCell = document.createElement("td");
@@ -208,8 +208,7 @@ const populateCartTable = () => {
     productQuantityCell.textContent = product.quantity;
 
     // Calculate the total price for the product (price * quantity)
-    const totalPrice = product.price * product.quantity;
-    productTotalCell.textContent = "$" + totalPrice.toFixed(2); // Display the total price with 2 decimal places
+    productTotalCell.textContent = "$" + total; // Display the total price with 2 decimal places
 
     // Create buttons for actions
     const addButton = document.createElement("button");
@@ -233,7 +232,15 @@ const populateCartTable = () => {
       deleteFromCart(product.id); //remove the product from cart
     });
 
-    updateTotalProducts();
+    // Update the cart table with shipping and grand total
+    const tableFooter = document.querySelector("#cartTable tfoot");
+    tableFooter.innerHTML = ""; // Clear the table footer before updating
+
+    const grandTotalRow = document.createElement("tr");
+    grandTotalRow.innerHTML = `<td colspan="5" class="text-end">Grand Total:</td><td>$${total.toFixed(2)}</td>`;
+    tableFooter.appendChild(grandTotalRow);
+
+    updateProductsCounter();
     // Append buttons to the actions cell
     productActionsCell.appendChild(addButton);
     productActionsCell.appendChild(subtractButton);
@@ -249,6 +256,3 @@ const populateCartTable = () => {
     tableBody.appendChild(row);
   });
 };
-
-// Invoke populateCartTable once the page is loaded
-populateCartTable();
